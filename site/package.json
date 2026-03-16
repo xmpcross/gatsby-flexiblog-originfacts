@@ -3,11 +3,11 @@
 	"private": true,
 	"version": "4.0.0",
 	"scripts": {
-		"develop": "unset DEBUG && HOME=${HOME:-/tmp} XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-/tmp} gatsby develop",
-		"start": "unset DEBUG && HOME=${HOME:-/tmp} XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-/tmp} gatsby develop",
-		"build": "unset DEBUG && HOME=${HOME:-/tmp} XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-/tmp} gatsby build",
+		"develop": "node scripts/gatsby-develop.js",
+		"start": "node scripts/gatsby-develop.js",
+		"build": "gatsby build",
 		"clean": "gatsby clean",
-		"serve": "unset DEBUG && HOME=${HOME:-/tmp} XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-/tmp} gatsby serve"
+		"serve": "gatsby serve"
 	},
 	"dependencies": {
 		"@elegantstack/gatsby-theme-flexiblog-agency": "*",

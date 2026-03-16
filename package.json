@@ -8,6 +8,7 @@
     "release": "lerna version"
   },
   "devDependencies": {
+    "ajv": "^8.17.1",
     "conventional-changelog-conventionalcommits": "^4.6.3"
   },
   "engines": {
