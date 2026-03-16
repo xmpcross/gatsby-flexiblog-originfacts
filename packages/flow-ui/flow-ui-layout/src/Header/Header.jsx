@@ -1,7 +1,6 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Container, Box, Flex } from 'theme-ui'
 import pageContextProvider from '@helpers/pageContextProvider'
-import Search from '@widgets/Search'
 import { HeaderLogo } from './Header.Logo'
 import { HeaderMenu } from './Header.Menu'
 import { HeaderColorMode } from './Header.ColorMode'
@@ -37,10 +36,24 @@ const styles = {
 
 export const Header = ({ children }) => {
   const context = useContext(pageContextProvider)
+  const [Search, setSearch] = useState(null)
 
   const { services, mobileMenu, darkMode } = context.pageContext
-
   const algolia = services && services.algolia
+
+  useEffect(() => {
+    let mounted = true
+
+    if (algolia) {
+      import('@widgets/Search').then(module => {
+        if (mounted) setSearch(() => module.default)
+      })
+    }
+
+    return () => {
+      mounted = false
+    }
+  }, [algolia])
 
   return (
     <Box sx={styles.wrapper}>
@@ -49,7 +62,7 @@ export const Header = ({ children }) => {
           <Box sx={styles.logoContainer}>
             <HeaderLogo />
           </Box>
-          <Box sx={styles.searchContainer}>{algolia && <Search />}</Box>
+          <Box sx={styles.searchContainer}>{algolia && Search ? <Search /> : null}</Box>
           <Box sx={styles.menuContainer}>
             <HeaderMenu mobileMenu={mobileMenu} />
           </Box>
