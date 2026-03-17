@@ -3,8 +3,8 @@
 	"private": true,
 	"version": "4.0.0",
 	"scripts": {
-		"develop": "node scripts/gatsby-develop.js",
-		"start": "node scripts/gatsby-develop.js",
+		"develop": "gatsby develop",
+		"start": "gatsby develop",
 		"build": "gatsby build",
 		"clean": "gatsby clean",
 		"serve": "gatsby serve"

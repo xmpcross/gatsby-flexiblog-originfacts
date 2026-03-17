@@ -1,11 +1,14 @@
 {
   "fonts": {
     "google": {
-      "families": ["Inter:400,600,700,900&display=swap"]
+      "families": [
+        "Urbanist:500,600,700,800&display=swap",
+        "Outfit:400,500,600,700&display=swap"
+      ]
     }
   },
   "theme": {
-    "headerFontFamily": ["Inter", "sans-serif"],
-    "bodyFontFamily": ["Inter", "sans-serif"]
+    "headerFontFamily": ["Urbanist", "sans-serif"],
+    "bodyFontFamily": ["Outfit", "sans-serif"]
   }
 }
