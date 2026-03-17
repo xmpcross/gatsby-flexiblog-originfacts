@@ -223,6 +223,12 @@
               hint: 'Custom slug',
               required: false,
             },
+            {
+              name: 'parentCategory',
+              label: 'Parent Category',
+              hint: 'Optional. Use this for sub-categories.',
+              required: false,
+            },
             { name: 'description', label: 'Description', required: false },
             {
               name: 'color',

@@ -66,7 +66,7 @@ module.exports = {
           },
           {
             name: 'About Us',
-            slug: '/about'
+            slug: '/about-us'
           },
           {
             name: 'Contact Us',
@@ -79,15 +79,15 @@ module.exports = {
         items: [
           {
             name: 'Privacy Notice',
-            slug: '/'
+            slug: '/privacy-policy'
           },
           {
             name: 'Cookie Policy',
-            slug: '/'
+            slug: '/cookie-policy'
           },
           {
             name: 'Terms Of Use',
-            slug: '/'
+            slug: '/terms-conditions'
           }
         ]
       }
