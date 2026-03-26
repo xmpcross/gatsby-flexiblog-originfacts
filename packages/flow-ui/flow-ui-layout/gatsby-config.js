@@ -6,7 +6,7 @@ module.exports = {
         alias: {
           '@layout': '@elegantstack/flow-ui-layout/src'
         },
-        extensions: ['js', 'jsx']
+        extensions: ['.js', '.jsx']
       }
     }
   ]

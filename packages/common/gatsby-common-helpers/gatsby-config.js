@@ -6,7 +6,7 @@ module.exports = {
         alias: {
           '@helpers': '@elegantstack/gatsby-common-helpers/src'
         },
-        extensions: ['js', 'jsx']
+        extensions: ['.js', '.jsx']
       }
     }
   ]

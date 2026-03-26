@@ -6,7 +6,7 @@ module.exports = {
         alias: {
           '@components': '@elegantstack/flow-ui-components/src'
         },
-        extensions: ['js', 'jsx']
+        extensions: ['.js', '.jsx']
       }
     }
   ]
