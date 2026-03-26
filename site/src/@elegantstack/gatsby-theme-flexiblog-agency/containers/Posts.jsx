@@ -331,6 +331,14 @@ const Posts = ({
 
           return (
             <React.Fragment key={`${group.categoryName}.list`}>
+              {(group.categoryName === 'Tours & Activities' || group.categoryName === 'Hotel & Accommodation') && (
+                <>
+                  <Stack effectProps={{ effect: false }}>
+                    <BannerHorizontal />
+                  </Stack>
+                  <Divider />
+                </>
+              )}
               {layout === 0 && layoutA}
               {layout === 1 && layoutB}
               {layout === 2 && layoutC}
