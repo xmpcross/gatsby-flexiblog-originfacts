@@ -16,6 +16,8 @@ const Posts = ({
   const { pageContext: { services = {} } = {} } = props
   const categories = useBlogCategories()
 
+  const groups = React.useMemo(() => posts.group ?? [], [posts.group])
+
   return (
     <Layout {...props}>
       <Seo title='Home' />
@@ -50,38 +52,12 @@ const Posts = ({
         </Sidebar>
       </Stack>
       <Divider space={5} />
-      {posts.group.length &&
-        posts.group.map((group, index) => (
-          <React.Fragment key={`${group.categoryName}.list`}>
-            {index % 2 === 0 ? (
-              <Stack
-                title={group.categoryName}
-                titleLink={group.nodes[0].category.slug}
-              >
-                <Main>
-                  <CardList
-                    nodes={group.nodes}
-                    limit={3}
-                    columns={[1, 1, 1, 3]}
-                    variant={[
-                      'horizontal-md',
-                      'horizontal',
-                      'horizontal',
-                      'vertical'
-                    ]}
-                  />
-                  <Divider space={2} />
-                  <CardList
-                    nodes={group.nodes}
-                    limit={3}
-                    skip={3}
-                    columns={[1, 2, 3, 3]}
-                    variant={['horizontal-md', 'horizontal-aside']}
-                    omitMedia
-                  />
-                </Main>
-              </Stack>
-            ) : (
+      {groups.length &&
+        groups.map((group, index) => {
+          if (!group?.nodes?.length) return null
+
+          return (
+            <React.Fragment key={`${group.categoryName}.list`}>
               <Stack
                 title={group.categoryName}
                 titleLink={group.nodes[0].category.slug}
@@ -152,18 +128,18 @@ const Posts = ({
                   />
                 </Sidebar>
               </Stack>
-            )}
-            {index === 0 && (
-              <>
-                <Divider />
-                <Stack effectProps={{ effect: false }}>
-                  <BannerHorizontal />
-                </Stack>
-              </>
-            )}
-            {index !== posts.group.length - 1 && <Divider />}
-          </React.Fragment>
-        ))}
+              {index === 0 && (
+                <>
+                  <Divider />
+                  <Stack effectProps={{ effect: false }}>
+                    <BannerHorizontal />
+                  </Stack>
+                </>
+              )}
+              {index !== groups.length - 1 && <Divider />}
+            </React.Fragment>
+          )
+        })}
       <Stack>
         <Main>
           {services.mailchimp && (
