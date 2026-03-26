@@ -19,12 +19,6 @@ module.exports = {
         continueOnFailure: true
       }
     },
-    {
-      resolve: 'gatsby-plugin-disqus',
-      options: {
-        shortname: process.env.GATSBY_DISQUS_SHORTNAME
-      }
-    },
     ...(mailchimpEndpoint && mailchimpEndpoint.length >= 40 ? [{
       resolve: 'gatsby-plugin-mailchimp',
       options: { endpoint: mailchimpEndpoint }
@@ -44,7 +38,7 @@ module.exports = {
         },
         services: {
           algolia: true,
-          disqus: true,
+          graphComment: true,
           mailchimp: true
         }
       }
