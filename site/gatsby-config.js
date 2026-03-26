@@ -42,16 +42,46 @@ module.exports = {
     //Header Menu Items
     headerMenu: [
       {
-        name: 'Home',
-        slug: '/'
+        name: 'Destination Guides',
+        slug: '/category/destination-guides'
       },
       {
-        name: 'Our Team',
-        slug: '/authors'
+        name: 'Hotels',
+        slug: '/category/hotel-and-accommodation'
       },
       {
-        name: 'Contact',
-        slug: '/contact'
+        name: 'Flights',
+        slug: '/category/flight-deals-and-airline-guides'
+      },
+      {
+        name: 'Car Rentals',
+        slug: '/category/car-rentals-and-transportation'
+      },
+      {
+        name: 'Tours & Activities',
+        slug: '/category/tours-and-activities'
+      },
+      {
+        name: 'Travel Resources',
+        slug: '/category/travel-resources',
+        items: [
+          {
+            name: 'Travel Credit Cards',
+            slug: '/category/travel-credit-cards'
+          },
+          {
+            name: 'Travel Gear & Accessories',
+            slug: '/category/travel-gear-and-accessories'
+          },
+          {
+            name: 'Travel Insurance',
+            slug: '/category/travel-insurance'
+          },
+          {
+            name: 'Luggage & Suitcases',
+            slug: '/category/luggage-and-suitcases'
+          }
+        ]
       }
     ],
 

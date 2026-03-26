@@ -2,13 +2,12 @@
   "fonts": {
     "google": {
       "families": [
-        "Urbanist:500,600,700,800&display=swap",
-        "Outfit:400,500,600,700&display=swap"
+        "Urbanist:400,500,600,700,800&display=swap"
       ]
     }
   },
   "theme": {
     "headerFontFamily": ["Urbanist", "sans-serif"],
-    "bodyFontFamily": ["Outfit", "sans-serif"]
+    "bodyFontFamily": ["Urbanist", "sans-serif"]
   }
 }

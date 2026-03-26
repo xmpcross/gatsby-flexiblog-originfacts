@@ -12,6 +12,10 @@ export const query = graphql`
       headerMenu {
         name
         slug
+        items {
+          name
+          slug
+        }
       }
       footerMenu {
         title
