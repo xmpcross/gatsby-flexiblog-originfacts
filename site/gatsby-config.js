@@ -17,6 +17,27 @@ module.exports = {
       }
     },
     {
+      resolve: 'gatsby-plugin-disqus',
+      options: {
+        shortname: process.env.GATSBY_DISQUS_SHORTNAME
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+        endpoint: process.env.GATSBY_MAILCHIMP_ENDPOINT
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-google-gtag',
+      options: {
+        trackingIds: [process.env.GATSBY_GA_TRACKING_ID],
+        pluginConfig: {
+          head: true
+        }
+      }
+    },
+    {
       resolve: '@elegantstack/gatsby-theme-flexiblog-agency',
       options: {
         sources: {
@@ -24,7 +45,8 @@ module.exports = {
         },
         services: {
           algolia: true,
-          graphComment: true
+          disqus: true,
+          mailchimp: true
         }
       }
     }
