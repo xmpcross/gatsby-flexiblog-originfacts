@@ -22,19 +22,19 @@ export default {
   /** Container */
   container: {
     maxWidth: `container`,
-    px: [3, 4]
+    px: [3, 3]
   },
   /** Container (full width version) */
   wide: {
     maxWidth: `wide`,
-    px: [3, 4]
+    px: [3, 3]
   },
   full: {
     maxWidth: `none`
   },
   /** Container (compact version) */
   compact: {
-    px: [3, 4]
+    px: [3, 3]
   },
 
   /** Main Container with sidebar support */

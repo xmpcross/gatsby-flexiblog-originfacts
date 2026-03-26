@@ -7,7 +7,18 @@ import Categories from '@widgets/Categories'
 import NewsletterExpanded from '@widgets/NewsletterExpanded'
 import BannerHorizontal from '@widgets/BannerHorizontal'
 import BannerVertical from '@widgets/BannerVertical'
+import TravelpayoutsFlightWidget from '@widgets/TravelpayoutsFlightWidget'
 import { useBlogCategories } from '@helpers-blog'
+
+const CATEGORY_ORDER = [
+  'Destination Guides',
+  'Car Rentals & Transportation',
+  'Flight Deals & Airline Guides',
+  'Hotel & Accommodation',
+  'Tours & Activities',
+  'Travel Resources',
+  'Travel Tips'
+]
 
 const EXCLUDED_CATEGORIES = [
   'Advertising',
@@ -15,17 +26,18 @@ const EXCLUDED_CATEGORIES = [
   'Innovation',
   'Management',
   'Travel Insurance',
-  'Travel Credit Cards'
+  'Travel Credit Cards',
+  'Car Rentals & Transportation'
 ]
 const SIDEBAR_LAYOUT_CATEGORIES = [
-  'Hotel & Accommodation',
   'Car Rentals & Transportation',
+  'Flight Deals & Airline Guides',
   'Travel Credit Cards',
   'Travel Gear & Accessories'
 ]
-const FEATURED_COVER_LAYOUT_CATEGORIES = ['Flight Deals & Airline Guides']
+const FEATURED_COVER_LAYOUT_CATEGORIES = []
 const FULL_WIDTH_LAYOUT_CATEGORIES = []
-const WHATS_NEW_LAYOUT_CATEGORIES = ['Destination Guides', 'Tours & Activities']
+const WHATS_NEW_LAYOUT_CATEGORIES = ['Destination Guides', 'Tours & Activities', 'Hotel & Accommodation']
 const NEWS_SPLIT_LAYOUT_CATEGORIES = []
 const SIMPLE_GRID_LAYOUT_CATEGORIES = []
 
@@ -37,7 +49,16 @@ const Posts = ({
   const categories = useBlogCategories()
 
   const groups = React.useMemo(
-    () => (posts.group ?? []).filter(g => !EXCLUDED_CATEGORIES.includes(g.categoryName)),
+    () =>
+      (posts.group ?? [])
+        .filter(g => !EXCLUDED_CATEGORIES.includes(g.categoryName))
+        .sort((a, b) => {
+          const ai = CATEGORY_ORDER.indexOf(a.categoryName)
+          const bi = CATEGORY_ORDER.indexOf(b.categoryName)
+          const aOrder = ai === -1 ? 999 : ai
+          const bOrder = bi === -1 ? 999 : bi
+          return aOrder - bOrder
+        }),
     [posts.group]
   )
 
@@ -348,8 +369,8 @@ const Posts = ({
               {index === 0 && (
                 <>
                   <Divider />
-                  <Stack effectProps={{ effect: false }}>
-                    <BannerHorizontal />
+                  <Stack effectProps={{ effect: false }} sx={{ px: `1rem` }}>
+                    <TravelpayoutsFlightWidget />
                   </Stack>
                 </>
               )}
