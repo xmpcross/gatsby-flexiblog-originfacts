@@ -1,5 +1,8 @@
 require('dotenv').config()
 
+const mailchimpEndpoint = process.env.GATSBY_MAILCHIMP_ENDPOINT
+const gaTrackingId = process.env.GATSBY_GA_TRACKING_ID
+
 module.exports = {
   plugins: [
     {
@@ -22,21 +25,17 @@ module.exports = {
         shortname: process.env.GATSBY_DISQUS_SHORTNAME
       }
     },
-    {
+    ...(mailchimpEndpoint && mailchimpEndpoint.length >= 40 ? [{
       resolve: 'gatsby-plugin-mailchimp',
-      options: {
-        endpoint: process.env.GATSBY_MAILCHIMP_ENDPOINT
-      }
-    },
-    {
+      options: { endpoint: mailchimpEndpoint }
+    }] : []),
+    ...(gaTrackingId && gaTrackingId.startsWith('G-') ? [{
       resolve: 'gatsby-plugin-google-gtag',
       options: {
-        trackingIds: [process.env.GATSBY_GA_TRACKING_ID],
-        pluginConfig: {
-          head: true
-        }
+        trackingIds: [gaTrackingId],
+        pluginConfig: { head: true }
       }
-    },
+    }] : []),
     {
       resolve: '@elegantstack/gatsby-theme-flexiblog-agency',
       options: {
