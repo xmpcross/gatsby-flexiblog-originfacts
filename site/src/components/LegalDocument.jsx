@@ -2,6 +2,13 @@ import React from 'react'
 import { Box } from 'theme-ui'
 
 const legalStyles = {
+  h1: {
+    fontFamily: 'Urbanist',
+    fontWeight: 600,
+    fontSize: '2rem',
+    mt: '2rem',
+    mb: 3
+  },
   a: {
     color: 'primary',
     textDecoration: 'none'
@@ -16,25 +23,34 @@ const legalStyles = {
   },
   h2: {
     variant: 'text.h3',
-    mt: 5,
+    fontFamily: 'Urbanist',
+    fontWeight: 600,
+    mt: '2rem',
     mb: 3
   },
   h3: {
     fontSize: 2,
-    mt: 4,
+    fontFamily: 'Urbanist',
+    fontWeight: 600,
+    mt: '2rem',
     mb: 2
   },
   h4: {
     fontSize: 1,
+    fontFamily: 'Urbanist',
+    fontWeight: 600,
     textTransform: 'uppercase',
     letterSpacing: '0.08em',
-    mt: 3,
+    mt: '2rem',
     mb: 2
   },
   h5: {
     fontSize: 0,
+    fontFamily: 'Urbanist',
+    fontWeight: 600,
     textTransform: 'uppercase',
     letterSpacing: '0.08em',
+    mt: '2rem',
     mb: 1
   },
   ul: {

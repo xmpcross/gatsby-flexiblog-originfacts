@@ -6,6 +6,12 @@ const gaTrackingId = process.env.GATSBY_GA_TRACKING_ID
 module.exports = {
   plugins: [
     {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        output: '/xml-sitemap'
+      }
+    },
+    {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {}
     },
@@ -33,6 +39,7 @@ module.exports = {
     {
       resolve: '@elegantstack/gatsby-theme-flexiblog-agency',
       options: {
+        darkMode: false,
         sources: {
           local: true
         },
@@ -40,13 +47,15 @@ module.exports = {
           algolia: true,
           graphComment: true,
           mailchimp: true
-        }
+        },
+        collectionPostsPerPage: 12
       }
     }
   ],
   // Customize your site metadata:
   siteMetadata: {
     //General Site Metadata
+    siteUrl: 'https://www.originfacts.com',
     title: 'FlexiBlog Theme',
     name: 'FlexiBlog',
     description: 'My site description...',
