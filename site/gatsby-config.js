@@ -113,10 +113,6 @@ module.exports = {
           {
             name: 'Travel Insurance',
             slug: '/category/travel-insurance'
-          },
-          {
-            name: 'Luggage & Suitcases',
-            slug: '/category/luggage-and-suitcases'
           }
         ]
       }
@@ -183,10 +179,6 @@ module.exports = {
               {
                 name: 'Travel Insurance',
                 slug: '/category/travel-insurance'
-              },
-              {
-                name: 'Luggage & Suitcases',
-                slug: '/category/luggage-and-suitcases'
               }
             ]
           }

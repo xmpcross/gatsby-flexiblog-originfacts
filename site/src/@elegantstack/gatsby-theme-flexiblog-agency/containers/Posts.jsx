@@ -24,7 +24,8 @@ const EXCLUDED_CATEGORIES = [
   'Management',
   'Travel Insurance',
   'Travel Credit Cards',
-  'Car Rentals & Transportation'
+  'Car Rentals & Transportation',
+  'Luggage & Suitcases'
 ]
 const SIDEBAR_LAYOUT_CATEGORIES = [
   'Car Rentals & Transportation',

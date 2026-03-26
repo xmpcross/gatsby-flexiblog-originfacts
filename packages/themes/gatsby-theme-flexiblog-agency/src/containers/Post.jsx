@@ -7,6 +7,8 @@ import Sticky from '@components/Sticky'
 import Seo from '@widgets/Seo'
 import AuthorCompact from '@widgets/AuthorCompact'
 import TableOfContentsCompact from '@widgets/TableOfContentsCompact'
+import Categories from '@widgets/Categories'
+import { useBlogCategories } from '@helpers-blog'
 import {
   PostHead,
   PostImage,
@@ -28,6 +30,19 @@ const Post = ({
     ...(categoryPosts ? categoryPosts.nodes : [])
   ]
   const { pageContext: { services = {}, siteUrl } = {} } = props
+  const allCategories = useBlogCategories()
+  const SUB_CATEGORIES = [
+    'Car Rentals & Transportation',
+    'Flight Deals & Airline Guides',
+    'Hotel & Accommodation',
+    'Travel Credit Cards',
+    'Travel Gear & Accessories',
+    'Travel Insurance',
+    'Luggage & Suitcases'
+  ]
+  const categories = allCategories.filter(
+    cat => !SUB_CATEGORIES.includes(cat.name)
+  )
 
   return (
     <Layout {...props}>
@@ -55,6 +70,8 @@ const Post = ({
           <AuthorCompact author={post.author} omitTitle />
           <Divider />
           <Sticky>
+            <Categories categories={categories} />
+            <Divider />
             {post.tableOfContents?.items && (
               <>
                 <TableOfContentsCompact {...post} />
