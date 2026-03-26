@@ -5,10 +5,23 @@ module.exports = {
       options: {}
     },
     {
+      resolve: 'gatsby-plugin-algolia',
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        chunkSize: 10000,
+        queries: require('@elegantstack/gatsby-blog-algolia/src/queries')
+      }
+    },
+    {
       resolve: '@elegantstack/gatsby-theme-flexiblog-agency',
       options: {
         sources: {
           local: true
+        },
+        services: {
+          algolia: true,
+          graphComment: true
         }
       }
     }
