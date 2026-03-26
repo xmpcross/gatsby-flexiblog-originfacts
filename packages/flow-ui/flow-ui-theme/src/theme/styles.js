@@ -26,6 +26,9 @@ export default {
   a: {
     variant: `links.normal`
   },
+  strong: {
+    fontWeight: 500
+  },
   h1: {
     variant: `text.h1`,
     borderBottomWidth: `sm`,

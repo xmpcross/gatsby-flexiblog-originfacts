@@ -21,7 +21,7 @@ typographyTheme.fonts = {
 }
 
 typographyTheme.fontWeights = {
-  body: `normal`,
+  body: 300,
   heading: `bold`,
   bold: 700,
   medium: 600,
