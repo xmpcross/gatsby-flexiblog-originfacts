@@ -19,8 +19,5 @@
   },
   "overrides": {
     "@babel/core": "^7.25.0"
-  },
-  "dependencies": {
-    "@babel/core": "^7.29.0"
   }
 }
