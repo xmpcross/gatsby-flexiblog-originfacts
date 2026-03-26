@@ -3,12 +3,9 @@ import { Layout, Stack, Main, Sidebar } from '@layout'
 import CardList from '@components/CardList'
 import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
-import Categories from '@widgets/Categories'
 import NewsletterExpanded from '@widgets/NewsletterExpanded'
 import BannerHorizontal from '@widgets/BannerHorizontal'
 import BannerVertical from '@widgets/BannerVertical'
-import TravelpayoutsFlightWidget from '@widgets/TravelpayoutsFlightWidget'
-import { useBlogCategories } from '@helpers-blog'
 
 const CATEGORY_ORDER = [
   'Destination Guides',
@@ -46,8 +43,6 @@ const Posts = ({
   ...props
 }) => {
   const { pageContext: { services = {} } = {} } = props
-  const categories = useBlogCategories()
-
   const groups = React.useMemo(
     () =>
       (posts.group ?? [])
@@ -65,10 +60,6 @@ const Posts = ({
   return (
     <Layout {...props}>
       <Seo title='Home' />
-      <Divider />
-      <Stack effectProps={{ effect: false }}>
-        <Categories categories={categories} variant='horizontal' omitTitle />
-      </Stack>
       <Divider />
       <Stack effectProps={{ effect: false }}>
         <Main>
@@ -366,14 +357,6 @@ const Posts = ({
               {layout === 3 && layoutD}
               {layout === 4 && layoutE}
               {layout === 5 && layoutF}
-              {index === 0 && (
-                <>
-                  <Divider />
-                  <Stack effectProps={{ effect: false }} sx={{ px: `1rem` }}>
-                    <TravelpayoutsFlightWidget />
-                  </Stack>
-                </>
-              )}
               {index !== groups.length - 1 && <Divider />}
             </React.Fragment>
           )

@@ -11,7 +11,7 @@ module.exports = {
         apiKey: process.env.ALGOLIA_ADMIN_KEY,
         chunkSize: 10000,
         queries: require('@elegantstack/gatsby-blog-algolia/src/queries'),
-        skipIndexing: !process.env.ALGOLIA_ADMIN_KEY
+        continueOnFailure: true
       }
     },
     {
