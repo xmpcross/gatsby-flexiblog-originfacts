@@ -94,15 +94,19 @@ module.exports = {
     //Footer Menu Items (2 Sets)
     footerMenu: [
       {
-        title: 'Quick Links',
+        title: 'Originfacts',
         items: [
           {
-            name: 'Advertise with us',
-            slug: '/contact'
+            name: 'Home',
+            slug: '/'
           },
           {
             name: 'About Us',
             slug: '/about-us'
+          },
+          {
+            name: 'Sitemap',
+            slug: '/sitemap'
           },
           {
             name: 'Contact Us',
@@ -111,10 +115,57 @@ module.exports = {
         ]
       },
       {
-        title: 'Legal Stuff',
+        title: 'Categories',
         items: [
           {
-            name: 'Privacy Notice',
+            name: 'Destination Guides',
+            slug: '/category/destination-guides'
+          },
+          {
+            name: 'Hotel & Accommodation',
+            slug: '/category/hotel-and-accommodation'
+          },
+          {
+            name: 'Car Rentals',
+            slug: '/category/car-rentals-and-transportation'
+          },
+          {
+            name: 'Flight & Airline Guides',
+            slug: '/category/flight-deals-and-airline-guides'
+          },
+          {
+            name: 'Tours & Activities',
+            slug: '/category/tours-and-activities'
+          },
+          {
+            name: 'Travel Resources',
+            slug: '/category/travel-resources',
+            items: [
+              {
+                name: 'Travel Credit Cards',
+                slug: '/category/travel-credit-cards'
+              },
+              {
+                name: 'Travel Gear & Accessories',
+                slug: '/category/travel-gear-and-accessories'
+              },
+              {
+                name: 'Travel Insurance',
+                slug: '/category/travel-insurance'
+              },
+              {
+                name: 'Luggage & Suitcases',
+                slug: '/category/luggage-and-suitcases'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        title: 'Useful Links',
+        items: [
+          {
+            name: 'Privacy Policy',
             slug: '/privacy-policy'
           },
           {
@@ -122,7 +173,7 @@ module.exports = {
             slug: '/cookie-policy'
           },
           {
-            name: 'Terms Of Use',
+            name: 'Terms & Conditions',
             slug: '/terms-conditions'
           }
         ]

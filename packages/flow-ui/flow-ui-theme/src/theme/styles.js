@@ -61,7 +61,7 @@ export default {
   },
   p: {
     color: 'article',
-    fontSize: 3,
+    fontSize: '18px',
     mb: 4,
     code: {
       fontSize: `inherit`
@@ -75,7 +75,7 @@ export default {
   },
   li: {
     color: 'article',
-    fontSize: 3,
+    fontSize: '18px',
     code: {
       fontSize: `inherit`
     },

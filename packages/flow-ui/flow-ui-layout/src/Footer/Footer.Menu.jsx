@@ -5,7 +5,10 @@ import useSiteMetadata from '@helpers-blog/useSiteMetadata'
 
 const styles = {
   navHeader: {
-    display: [`none`, `block`]
+    display: [`none`, `block`],
+    fontFamily: `'Urbanist', sans-serif`,
+    fontWeight: 700,
+    fontSize: `18px`
   }
 }
 
@@ -15,7 +18,7 @@ export const FooterMenu = () => {
   return (
     <>
       {footerMenu.map(menu => (
-        <Box key={`footer-menu-${menu.title}`}>
+        <Box key={`footer-menu-${menu.title}`} sx={{ 'a, span': { fontSize: `14px` } }}>
           <Navigation
             variant={[`horizontal`, `vertical`]}
             headingProps={{ variant: 'h4', as: 'p', sx: styles.navHeader }}

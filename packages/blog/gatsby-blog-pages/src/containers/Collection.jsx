@@ -16,6 +16,7 @@ const PageCollection = ({ data: { posts, collectionInfo }, ...props }) => (
         subheader={collectionInfo.title}
         running={collectionInfo.description}
         totalCount={posts.totalCount}
+        headingStyle={{ fontSize: '2rem' }}
       />
     </Stack>
     <Divider />
