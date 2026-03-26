@@ -10,7 +10,8 @@ module.exports = {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
         apiKey: process.env.ALGOLIA_ADMIN_KEY,
         chunkSize: 10000,
-        queries: require('@elegantstack/gatsby-blog-algolia/src/queries')
+        queries: require('@elegantstack/gatsby-blog-algolia/src/queries'),
+        skipIndexing: !process.env.ALGOLIA_ADMIN_KEY
       }
     },
     {
