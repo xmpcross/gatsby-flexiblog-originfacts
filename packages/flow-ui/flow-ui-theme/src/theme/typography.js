@@ -2,7 +2,7 @@ import { toTheme } from '@theme-ui/typography'
 import fonts from './typography-fonts.json'
 
 const typography = {
-  baseFontSize: 16,
+  baseFontSize: 18,
   baseLineHeight: 1.8,
   headerLineHeight: 1.33,
   scaleRatio: 1.9,

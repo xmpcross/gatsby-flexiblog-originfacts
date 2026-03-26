@@ -4,6 +4,7 @@ import pageContextProvider from '@helpers/pageContextProvider'
 import { HeaderLogo } from './Header.Logo'
 import { HeaderMenu } from './Header.Menu'
 import { HeaderColorMode } from './Header.ColorMode'
+import SearchInput from '@widgets/Search/Search.Input'
 
 const styles = {
   wrapper: {
@@ -15,16 +16,19 @@ const styles = {
     zIndex: 10
   },
   logoContainer: {
-    flexBasis: [`full`, null, `1/5`]
+    flexBasis: [`full`, null, `220px`],
+    flexShrink: 0
   },
   searchContainer: {
-    flexBasis: [`auto`, null, `1/6`],
+    flexBasis: [`auto`, null, `140px`],
+    flexShrink: 1,
     minWidth: `auto`,
     order: [3, null, `unset`],
-    mx: 3
+    ml: [0, null, 3],
+    mr: [0, null, 4]
   },
   menuContainer: {
-    flexBasis: [`auto`, null, `3/5`],
+    flex: [`0 1 auto`, null, `1 1 auto`],
     minWidth: `auto`,
     order: [4, null, `unset`]
   },
@@ -58,11 +62,13 @@ export const Header = ({ children }) => {
   return (
     <Box sx={styles.wrapper}>
       <Container variant='compact' sx={styles.container}>
-        <Flex variant='layout.header'>
+        <Flex variant='layout.header' sx={{ justifyContent: [`space-between`, null, `flex-start`] }}>
           <Box sx={styles.logoContainer}>
             <HeaderLogo />
           </Box>
-          <Box sx={styles.searchContainer}>{algolia && Search ? <Search /> : null}</Box>
+          <Box sx={styles.searchContainer}>
+            {algolia && Search ? <Search /> : <SearchInput isLoaded />}
+          </Box>
           <Box sx={styles.menuContainer}>
             <HeaderMenu mobileMenu={mobileMenu} />
           </Box>

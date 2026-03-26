@@ -46,16 +46,22 @@ module.exports = {
         slug: '/category/destination-guides'
       },
       {
-        name: 'Hotels',
-        slug: '/category/hotel-and-accommodation'
-      },
-      {
-        name: 'Flights',
-        slug: '/category/flight-deals-and-airline-guides'
-      },
-      {
-        name: 'Car Rentals',
-        slug: '/category/car-rentals-and-transportation'
+        name: 'Travel Tips',
+        slug: '/category/travel-tips',
+        items: [
+          {
+            name: 'Car Rentals & Transportation',
+            slug: '/category/car-rentals-and-transportation'
+          },
+          {
+            name: 'Flight Deals & Airline Guides',
+            slug: '/category/flight-deals-and-airline-guides'
+          },
+          {
+            name: 'Hotel & Accommodation',
+            slug: '/category/hotel-and-accommodation'
+          }
+        ]
       },
       {
         name: 'Tours & Activities',

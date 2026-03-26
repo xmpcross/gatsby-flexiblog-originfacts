@@ -21,7 +21,8 @@ export default {
     borderStyle: `solid`,
     borderColor: focus ? `omegaLight` : `headerBg`,
     borderWidth: `md`,
-    px: 3
+    minHeight: `56px`,
+    px: 4
   }),
   searchIcon: {
     flexShrink: 0
@@ -30,7 +31,9 @@ export default {
     display: [`block`, null, `none`]
   },
   input: {
-    ml: 1
+    ml: 2,
+    minWidth: [`0`, null, `320px`],
+    fontSize: `1rem`
   },
   poweredBy: {
     position: `absolute`,

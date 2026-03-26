@@ -5,7 +5,6 @@ import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
 import Categories from '@widgets/Categories'
 import NewsletterExpanded from '@widgets/NewsletterExpanded'
-import BannerHorizontal from '@widgets/BannerHorizontal'
 import BannerVertical from '@widgets/BannerVertical'
 import { useBlogCategories } from '@helpers-blog'
 
@@ -16,7 +15,22 @@ const Posts = ({
   const { pageContext: { services = {} } = {} } = props
   const categories = useBlogCategories()
 
-  const EXCLUDED_CATEGORIES = ['Advertising', 'Case Studies', 'Innovation', 'Management']
+  const EXCLUDED_CATEGORIES = [
+    'Advertising',
+    'Case Studies',
+    'Innovation',
+    'Management',
+    'Travel Insurance'
+  ]
+  const SIDEBAR_LAYOUT_CATEGORIES = [
+    'Hotel & Accommodation',
+    'Car Rentals & Transportation'
+  ]
+  const FEATURED_COVER_LAYOUT_CATEGORIES = ['Flight Deals & Airline Guides']
+  const FULL_WIDTH_LAYOUT_CATEGORIES = [
+    'Destination Guides',
+    'Tours & Activities'
+  ]
 
   const groups = React.useMemo(
     () => (posts.group ?? []).filter(g => !EXCLUDED_CATEGORIES.includes(g.categoryName)),
@@ -61,7 +75,13 @@ const Posts = ({
         groups.map((group, index) => {
           if (!group?.nodes?.length) return null
 
-          const layout = index % 3
+          const layout = SIDEBAR_LAYOUT_CATEGORIES.includes(group.categoryName)
+            ? 0
+            : FEATURED_COVER_LAYOUT_CATEGORIES.includes(group.categoryName)
+              ? 1
+              : FULL_WIDTH_LAYOUT_CATEGORIES.includes(group.categoryName)
+                ? 2
+              : index % 3
 
           // Layout 0: sidebar + main + sidebar (5 cards)
           const layoutA = (
@@ -192,14 +212,6 @@ const Posts = ({
               {layout === 0 && layoutA}
               {layout === 1 && layoutB}
               {layout === 2 && layoutC}
-              {index === 0 && (
-                <>
-                  <Divider />
-                  <Stack effectProps={{ effect: false }}>
-                    <BannerHorizontal />
-                  </Stack>
-                </>
-              )}
               {index !== groups.length - 1 && <Divider />}
             </React.Fragment>
           )

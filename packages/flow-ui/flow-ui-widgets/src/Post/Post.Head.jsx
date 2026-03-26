@@ -38,5 +38,5 @@ export const PostHead = ({ title, author, date, timeToRead, category }) => {
     </TextList>
   )
 
-  return <PageTitle header={title} running={info} />
+  return <PageTitle header={title} running={info} headingStyle={{ fontSize: `2rem` }} />
 }

@@ -5,16 +5,20 @@ import { FaRegHandshake } from 'react-icons/fa'
 
 const styles = {
   wrapper: {
-    alignItems: `center`,
+    alignItems: `stretch`,
     flexDirection: `column`,
     bg: `omegaLighter`,
     borderRadius: `lg`,
     size: `full`,
     p: 4,
   },
+  embed: {
+    width: `100%`
+  },
   heading: {
     color: `omegaDark`,
-    wordSpacing: 500, //force line breaks
+    width: `100%`,
+    textAlign: `left`,
     svg: {
       color: `beta`,
       size: `icon.lg`,
@@ -35,6 +39,13 @@ const styles = {
       p: 0,
       my: 2,
     },
+    a: {
+      color: `inherit`,
+      textDecoration: `none`,
+      ':hover': {
+        textDecoration: `underline`
+      }
+    },
     'li:before': {
       content: `""`,
       display: `inline-block`,
@@ -48,23 +59,45 @@ const styles = {
   button: {
     display: `block`,
     mt: `auto`,
-  },
+  }
 }
 
 const BannerVertical = () => (
   <Flex sx={styles.wrapper}>
     <Heading variant='h2' sx={styles.heading}>
       <FaRegHandshake />
-      Best Networking Workshops
+      Explore the World, Without the Price Tag.
     </Heading>
     <Heading variant='h4' sx={styles.subheading}>
-      In this workshop, learn when and how to network with modern best
-      practices.
+      Expert destination guides, insider secrets for cheap flights, and hand-picked stays. Your journey to the extraordinary starts here.
     </Heading>
     <Text as='ul' variant='small' sx={styles.list}>
-      <li>Explain the importance of networking for career-building</li>
-      <li>Practice modern tips for effective networking</li>
-      <li>Understand the steps towards building your own network</li>
+      <li>
+        <Link to='/category/destination-guides'>
+          <b>Destination Guides:</b> Plan your next itinerary with local insights.
+        </Link>
+      </li>
+      <li>
+        <Link to='/category/flight-deals-and-airline-guides'>
+          <b>Cheap Flights:</b> Master the art of the "Error Fare" and budget booking.
+        </Link>
+      </li>
+      <li>
+        <Link to='/category/hotel-and-accommodation'>
+          <b>Stays & Hotels:</b> From boutique gems to budget-friendly hostels.
+        </Link>
+      </li>
+      <li>
+        <Link to='/category/car-rentals-and-transportation'>
+          <b>Car Rentals:</b> Road trip essentials and rental hacks.
+        </Link>
+      </li>
+      <li>
+        <Link to='/category/travel-resources'>
+          <b>Travel Resources:</b> The gear, apps, and insurance we actually use.
+        </Link>
+      </li>
+
     </Text>
     <Button
       variant='primary'

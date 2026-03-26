@@ -1,5 +1,6 @@
 {
   "name": "Hotel & Accommodation",
+  "parentCategory": "Travel Tips",
   "icon": "hotel-accommodation.svg",
   "color": "#efe4ff",
   "description": "Hotels, short stays, places to sleep, and accommodation booking advice."

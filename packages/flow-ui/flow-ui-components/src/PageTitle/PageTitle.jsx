@@ -17,10 +17,10 @@ const styles = {
   }
 }
 
-const PageTitle = ({ header, subheader, running, totalCount }) => {
+const PageTitle = ({ header, subheader, running, totalCount, headingSx, headingStyle }) => {
   return (
     <div>
-      <Heading variant='h1' as='h1'>
+      <Heading variant='h1' as='h1' sx={headingSx} style={headingStyle}>
         {header}{' '}
         {totalCount && (
           <Badge variant='tag-white' sx={styles.count}>
@@ -49,5 +49,7 @@ PageTitle.propTypes = {
   title: PropTypes.string,
   subheader: PropTypes.string,
   running: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  totalCount: PropTypes.number
+  totalCount: PropTypes.number,
+  headingSx: PropTypes.object,
+  headingStyle: PropTypes.object
 }
