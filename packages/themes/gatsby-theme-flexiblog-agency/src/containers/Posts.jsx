@@ -16,7 +16,12 @@ const Posts = ({
   const { pageContext: { services = {} } = {} } = props
   const categories = useBlogCategories()
 
-  const groups = React.useMemo(() => posts.group ?? [], [posts.group])
+  const EXCLUDED_CATEGORIES = ['Advertising', 'Case Studies', 'Innovation', 'Management']
+
+  const groups = React.useMemo(
+    () => (posts.group ?? []).filter(g => !EXCLUDED_CATEGORIES.includes(g.categoryName)),
+    [posts.group]
+  )
 
   return (
     <Layout {...props}>
@@ -56,78 +61,137 @@ const Posts = ({
         groups.map((group, index) => {
           if (!group?.nodes?.length) return null
 
+          const layout = index % 3
+
+          // Layout 0: sidebar + main + sidebar (5 cards)
+          const layoutA = (
+            <Stack
+              title={group.categoryName}
+              titleLink={group.nodes[0].category.slug}
+              direction={['column', 'column', 'column', 'row']}
+            >
+              <Sidebar
+                sx={{
+                  pl: 0,
+                  pr: [0, null, null, 3],
+                  display: [null, `flex`],
+                  flexDirection: [`column`, null, null, `row`]
+                }}
+              >
+                <CardList
+                  nodes={group.nodes}
+                  limit={1}
+                  columns={[1]}
+                  variant={['horizontal-md', 'horizontal', 'horizontal', 'vertical']}
+                  omitCategory
+                />
+              </Sidebar>
+              <Main
+                sx={{
+                  display: [null, `flex`],
+                  flexDirection: [`column`, null, null, `row`]
+                }}
+              >
+                <Divider space={2} />
+                <CardList
+                  nodes={group.nodes}
+                  limit={3}
+                  skip={1}
+                  columns={[1, 1, 3, 1]}
+                  variant={['horizontal-md', 'horizontal-md', 'horizontal-aside']}
+                  mediaType='icon'
+                  omitCategory
+                />
+                <Divider space={2} />
+              </Main>
+              <Sidebar
+                sx={{
+                  pl: [0, null, null, 3],
+                  display: [null, `flex`],
+                  flexDirection: [`column`, null, null, `row`]
+                }}
+              >
+                <CardList
+                  nodes={group.nodes}
+                  limit={1}
+                  skip={4}
+                  columns={[1]}
+                  variant={['horizontal-md', 'horizontal', 'horizontal', 'vertical']}
+                  omitCategory
+                />
+              </Sidebar>
+            </Stack>
+          )
+
+          // Layout 1: hero cover + horizontal grid (4 cards)
+          const layoutB = (
+            <Stack
+              title={group.categoryName}
+              titleLink={group.nodes[0].category.slug}
+            >
+              <Main>
+                <CardList
+                  nodes={group.nodes}
+                  limit={1}
+                  columns={[1]}
+                  variant='horizontal-cover'
+                  omitCategory
+                />
+                <Divider space={2} />
+                <CardList
+                  nodes={group.nodes}
+                  limit={3}
+                  skip={1}
+                  columns={[1, 3]}
+                  variant={['horizontal-md', 'horizontal']}
+                  omitCategory
+                />
+              </Main>
+            </Stack>
+          )
+
+          // Layout 2: full-width horizontal-lg grid (4 cards)
+          const layoutC = (
+            <Stack
+              title={group.categoryName}
+              titleLink={group.nodes[0].category.slug}
+            >
+              <Main>
+                <CardList
+                  nodes={group.nodes}
+                  limit={2}
+                  columns={[1, 2]}
+                  variant={['horizontal-md', 'horizontal-lg']}
+                  omitCategory
+                />
+                <Divider space={2} />
+                <CardList
+                  nodes={group.nodes}
+                  limit={2}
+                  skip={2}
+                  columns={[1, 2]}
+                  variant={['horizontal-md', 'horizontal-aside']}
+                  omitCategory
+                />
+              </Main>
+              <Sidebar sx={{ pl: `3`, flexBasis: `1/4` }}>
+                <CardList
+                  nodes={group.nodes}
+                  limit={1}
+                  skip={4}
+                  columns={[1]}
+                  variant='vertical'
+                  omitCategory
+                />
+              </Sidebar>
+            </Stack>
+          )
+
           return (
             <React.Fragment key={`${group.categoryName}.list`}>
-              <Stack
-                title={group.categoryName}
-                titleLink={group.nodes[0].category.slug}
-                direction={['column', 'column', 'column', 'row']}
-              >
-                <Sidebar
-                  sx={{
-                    pl: 0,
-                    pr: [0, null, null, 3],
-                    display: [null, `flex`],
-                    flexDirection: [`column`, null, null, `row`]
-                  }}
-                >
-                  <CardList
-                    nodes={group.nodes}
-                    limit={1}
-                    columns={[1]}
-                    variant={[
-                      'horizontal-md',
-                      'horizontal',
-                      'horizontal',
-                      'vertical'
-                    ]}
-                    omitCategory
-                  />
-                </Sidebar>
-                <Main
-                  sx={{
-                    display: [null, `flex`],
-                    flexDirection: [`column`, null, null, `row`]
-                  }}
-                >
-                  <Divider space={2} />
-                  <CardList
-                    nodes={group.nodes}
-                    limit={3}
-                    skip={1}
-                    columns={[1, 1, 3, 1]}
-                    variant={[
-                      'horizontal-md',
-                      'horizontal-md',
-                      'horizontal-aside'
-                    ]}
-                    mediaType='icon'
-                    omitCategory
-                  />
-                  <Divider space={2} />
-                </Main>
-                <Sidebar
-                  sx={{
-                    pl: [0, null, null, 3],
-                    display: [null, `flex`],
-                    flexDirection: [`column`, null, null, `row`]
-                  }}
-                >
-                  <CardList
-                    nodes={group.nodes}
-                    limit={1}
-                    skip={4}
-                    columns={[1]}
-                    variant={[
-                      'horizontal-md',
-                      'horizontal',
-                      'horizontal',
-                      'vertical'
-                    ]}
-                    omitCategory
-                  />
-                </Sidebar>
-              </Stack>
+              {layout === 0 && layoutA}
+              {layout === 1 && layoutB}
+              {layout === 2 && layoutC}
               {index === 0 && (
                 <>
                   <Divider />
