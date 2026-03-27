@@ -56,7 +56,7 @@ const BannerHorizontal = () => {
 
 const bannerHorizontalQuery = graphql`
   query BannerHorizontalQuery {
-    file(absolutePath: { regex: "/banner.(jpeg|jpg|gif|png)/" }) {
+    file(absolutePath: { regex: "/plane.(jpeg|jpg|gif|png)/" }) {
       banner: childImageSharp {
         regular: resize(width: 300, height: 150, cropFocus: CENTER) {
           src
