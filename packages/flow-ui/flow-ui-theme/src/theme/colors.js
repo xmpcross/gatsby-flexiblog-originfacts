@@ -68,7 +68,7 @@ const omega = {
 export default {
   text: gray[600],
   article: gray[700],
-  heading: gray[800],
+  heading: `#000000`,
 
   ...alpha,
   ...beta,

@@ -6,6 +6,6 @@ export default {
     color: 'alpha'
   },
   ':hover': {
-    color: 'alphaDark'
+    color: 'rgb(121, 121, 121)'
   }
 }

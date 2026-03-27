@@ -1,5 +1,5 @@
 export default {
-  imageVariant: `horizontal`,
+  imageVariant: `hero`,
 
   card: {
     ':hover': {
@@ -16,8 +16,15 @@ export default {
     m: 0
   },
   image: {
-    minHeight: `15rem`,
+    minHeight: `20rem`,
+    width: `full`,
+    '.gatsby-image-wrapper': {
+      width: `100% !important`,
+      maxWidth: `none !important`
+    },
     img: {
+      objectFit: `cover`,
+      width: `100%`,
       borderRadius: `lg`
     }
   },

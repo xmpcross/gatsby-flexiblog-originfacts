@@ -25,7 +25,9 @@ const EXCLUDED_CATEGORIES = [
   'Travel Insurance',
   'Travel Credit Cards',
   'Car Rentals & Transportation',
-  'Luggage & Suitcases'
+  'Luggage & Suitcases',
+  'Travel Gear & Accessories',
+  'Tours & Activities'
 ]
 const SIDEBAR_LAYOUT_CATEGORIES = [
   'Car Rentals & Transportation',
@@ -79,6 +81,8 @@ const Posts = ({
             limit={3}
             variant='horizontal-cover'
             slider
+            autoPlay
+            autoplaySpeed={5000}
             fade
             controlPosition='over'
             loading='eager'

@@ -24,7 +24,10 @@ export default {
     px: 2
   },
   a: {
-    variant: `links.normal`
+    variant: `links.normal`,
+    '&:hover': {
+      color: `rgb(121, 121, 121)`
+    }
   },
   strong: {
     fontWeight: 500

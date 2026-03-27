@@ -48,7 +48,7 @@ module.exports = {
           graphComment: true,
           mailchimp: true
         },
-        collectionPostsPerPage: 12
+        collectionPostsPerPage: 9
       }
     }
   ],
