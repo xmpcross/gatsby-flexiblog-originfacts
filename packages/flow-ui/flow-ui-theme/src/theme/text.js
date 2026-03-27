@@ -1,7 +1,8 @@
 const heading = {
   display: `block`,
   color: `heading`,
-  fontWeight: `heading`,
+  fontFamily: `"Urbanist", sans-serif`,
+  fontWeight: 700,
   textDecoration: `none`,
   mb: 3
 }
@@ -12,8 +13,8 @@ export default {
   },
   h1: {
     ...heading,
-    fontSize: [5, 6, null, 7],
-    fontWeight: `bolder`
+    fontSize: `2rem`,
+    fontWeight: 700
   },
   h2: {
     ...heading,
@@ -25,13 +26,11 @@ export default {
   },
   h4: {
     ...heading,
-    fontSize: 2,
-    fontWeight: `medium`
+    fontSize: 2
   },
   h5: {
     ...heading,
-    fontSize: 1,
-    fontWeight: `medium`
+    fontSize: 1
   },
   medium: {
     fontSize: 3,

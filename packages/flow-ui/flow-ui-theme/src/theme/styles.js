@@ -29,6 +29,9 @@ export default {
   strong: {
     fontWeight: 500
   },
+  b: {
+    fontWeight: 500
+  },
   h1: {
     variant: `text.h1`,
     borderBottomWidth: `sm`,
