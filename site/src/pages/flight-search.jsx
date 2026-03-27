@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Main, Layout, Stack } from '@layout'
 import Divider from '@components/Divider'
 import PageTitle from '@components/PageTitle'
@@ -132,7 +132,7 @@ const SEARCH_SITES = [
     name: 'Google Flights',
     icon: '✈️',
     desc: 'Best price calendar & alerts',
-    url: (from, to, dep, ret, tripType) => {
+    url: (from, to) => {
       const base = 'https://www.google.com/travel/flights'
       if (!from && !to) return base
       const params = new URLSearchParams()
@@ -201,17 +201,6 @@ const FlightSearchPage = props => {
   const [returnDate, setReturnDate] = useState('')
   const [passengers, setPassengers] = useState('1')
 
-  useEffect(() => {
-    const script = document.createElement('script')
-    script.async = true
-    script.type = 'module'
-    script.src = 'https://tpscr.com/wl_web/main.js?wl_id=15561'
-    document.head.appendChild(script)
-    return () => {
-      document.head.removeChild(script)
-    }
-  }, [])
-
   const handleSearch = e => {
     e.preventDefault()
     const params = new URLSearchParams()
@@ -223,7 +212,9 @@ const FlightSearchPage = props => {
 
   return (
     <Layout {...props}>
-      <Seo title='Flight Search — Find Cheap Flights' />
+      <Seo title='Flight Search — Find Cheap Flights'>
+            <script async type='module' src='https://tpscr.com/wl_web/main.js?wl_id=15561' data-noptimize='1' data-cfasync='false' data-wpfc-render='false' data-no-defer='1' />
+          </Seo>
       <Divider />
       <Stack>
         <Main>
@@ -234,7 +225,8 @@ const FlightSearchPage = props => {
           <Divider />
 
           {/* Travelpayouts Widget */}
-          <Box id='tp-widget-container' sx={{ mb: 6 }} />
+          <div id='tpwl-search'></div>
+          <div id='tpwl-tickets'></div>
 
           {/* Search Box */}
           <Box sx={styles.searchBox} as='form' onSubmit={handleSearch}>
