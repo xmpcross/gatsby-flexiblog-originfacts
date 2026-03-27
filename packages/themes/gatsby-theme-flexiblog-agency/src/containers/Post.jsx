@@ -1,11 +1,11 @@
 import React from 'react'
-import { Card as CardComponent } from 'theme-ui'
+import { Link } from 'gatsby'
+import { Card as CardComponent, Flex, Text } from 'theme-ui'
 import { Layout, Stack, Main, Sidebar } from '@layout'
 import CardList from '@components/CardList'
 import Divider from '@components/Divider'
 import Sticky from '@components/Sticky'
 import Seo from '@widgets/Seo'
-import AuthorCompact from '@widgets/AuthorCompact'
 import TableOfContentsCompact from '@widgets/TableOfContentsCompact'
 import Categories from '@widgets/Categories'
 import { useBlogCategories } from '@helpers-blog'
@@ -20,10 +20,11 @@ import {
   PostFooter
 } from '@widgets/Post'
 
-const Post = ({
-  data: { post, tagCategoryPosts, tagPosts, categoryPosts, previous, next },
-  ...props
-}) => {
+const Post = ({ data, ...props }) => {
+  if (!data || !data.post) return null
+
+  const { post, tagCategoryPosts, tagPosts, categoryPosts, previous, next } = data
+
   const relatedPosts = [
     ...(tagCategoryPosts ? tagCategoryPosts.nodes : []),
     ...(tagPosts ? tagPosts.nodes : []),
@@ -48,6 +49,20 @@ const Post = ({
     <Layout {...props}>
       <Seo {...post} siteUrl={siteUrl} />
       <Divider />
+      <Stack>
+        <Flex sx={{ alignItems: `center`, flexWrap: `wrap`, fontSize: `14px`, color: `omegaDark`, gap: 1 }}>
+          <Text as={Link} to='/' sx={{ color: `inherit`, textDecoration: `none`, '&:hover': { textDecoration: `underline` } }}>Home</Text>
+          <Text sx={{ mx: 1 }}>/</Text>
+          {post.category && (
+            <>
+              <Text as={Link} to={`/${post.category.slug}`} sx={{ color: `inherit`, textDecoration: `none`, '&:hover': { textDecoration: `underline` } }}>{post.category.name}</Text>
+              <Text sx={{ mx: 1 }}>/</Text>
+            </>
+          )}
+          <Text sx={{ color: `omega` }}>{post.title}</Text>
+        </Flex>
+      </Stack>
+      <Divider />
       <Stack effectProps={{ effect: 'fadeInDown' }}>
         <PostHead {...post} />
       </Stack>
@@ -67,10 +82,8 @@ const Post = ({
           </CardComponent>
         </Main>
         <Sidebar>
-          <AuthorCompact author={post.author} omitTitle />
-          <Divider />
           <Sticky>
-            <Categories categories={categories} />
+            <Categories categories={categories} title={null} />
             <Divider />
             {post.tableOfContents?.items && (
               <>
