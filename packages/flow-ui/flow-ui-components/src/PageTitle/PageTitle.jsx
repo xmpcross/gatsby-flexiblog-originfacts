@@ -17,7 +17,7 @@ const styles = {
   }
 }
 
-const PageTitle = ({ header, subheader, running, totalCount, headingSx, headingStyle }) => {
+const PageTitle = ({ header, subheader, running, totalCount, headingSx, headingStyle, runningSx }) => {
   return (
     <div>
       <Heading variant='h1' as='h1' sx={headingSx} style={headingStyle}>
@@ -35,7 +35,7 @@ const PageTitle = ({ header, subheader, running, totalCount, headingSx, headingS
         </Text>
       )}
       {running && (
-        <Text variant='h4' sx={styles.runninghead}>
+        <Text variant='h4' sx={{ ...styles.runninghead, ...runningSx }}>
           {running}
         </Text>
       )}

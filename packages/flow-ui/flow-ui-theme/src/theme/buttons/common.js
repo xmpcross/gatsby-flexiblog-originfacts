@@ -11,7 +11,7 @@ const button = {
   KhtmlUserSelect: `none`,
   MozUserSelect: `none`,
   MsUserSelect: `none`,
-  borderRadius: `full`,
+  borderRadius: `default`,
   cursor: `pointer`,
   borderWidth: `md`,
   borderStyle: `solid`,

@@ -5,11 +5,12 @@ import rv from '@components/utils/buildResponsiveVariant'
 const styles = {
   excerpt: {
     flex: `auto`,
-    mb: 3
+    mb: 3,
+    fontSize: `1rem`
   }
 }
 
-const CardBodyExcerpt = ({ variant, excerpt, omitExcerpt }) => {
+const CardBodyExcerpt = ({ variant, excerpt, omitExcerpt, forceExcerpt }) => {
   const context = useThemeUI()
 
   const responsiveVariant = rv(variant, 'excerpt')
@@ -23,12 +24,19 @@ const CardBodyExcerpt = ({ variant, excerpt, omitExcerpt }) => {
     false
   )
 
-  return !omitExcerpt && visibility ? (
+  return !omitExcerpt && (forceExcerpt || visibility) ? (
     <Text
       variant='small'
       sx={{
         ...styles.excerpt,
-        variant: responsiveVariant
+        ...(forceExcerpt
+          ? {
+              display: `block`,
+              color: `#ffffff`
+            }
+          : {
+              variant: responsiveVariant
+            })
       }}
     >
       {excerpt}

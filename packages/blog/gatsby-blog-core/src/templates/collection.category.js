@@ -17,6 +17,15 @@ export const pageQuery = graphql`
       name
       slug
       description
+      parentCategory
+    }
+    allCategories: allArticleCategory(sort: { name: ASC }) {
+      nodes {
+        id
+        name
+        slug
+        parentCategory
+      }
     }
     posts: allArticle(
       filter: {
@@ -31,6 +40,11 @@ export const pageQuery = graphql`
       nodes {
         ...ArticlePreview
         ...ArticleThumbnailRegular
+        tags {
+          id
+          name
+          slug
+        }
       }
       ...ArticlePagination
     }

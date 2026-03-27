@@ -36,6 +36,7 @@ interface ArticleCategory implements Node {
   description: String
   color: String
   icon: String
+  parentCategory: String
 }
 
 ############################################

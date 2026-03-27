@@ -82,7 +82,7 @@ export default {
   error: red[500],
 
   white: white,
-  background: `#ffffff`,
+  background: `#f7f7f7`,
   contentBg: white,
   headerBg: white,
   footerBg: white,

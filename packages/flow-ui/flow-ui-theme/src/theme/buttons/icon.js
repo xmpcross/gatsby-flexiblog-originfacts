@@ -2,6 +2,6 @@ import simple from './simple'
 
 export default {
   ...simple,
-  borderRadius: `full`,
+  borderRadius: `default`,
   bg: `omegaLighter`,
 }

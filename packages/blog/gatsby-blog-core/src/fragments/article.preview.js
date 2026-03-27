@@ -7,6 +7,7 @@ export const query = graphql`
     slug
     link
     excerpt @include(if: $includeExcerpt)
+    longExcerpt: excerpt(pruneLength: 200) @include(if: $includeExcerpt)
     timeToRead @include(if: $includeTimeToRead)
     featured
     thumbnailText
